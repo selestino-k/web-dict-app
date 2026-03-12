@@ -10,6 +10,8 @@ Route::inertia('welcome', 'welcome', [
     'canRegister' => Features::enabled(Features::registration()),
 ])->name('welcome');
 
+Route::get('/api/dictionary/search', [App\Http\Controllers\DictionaryController::class, 'search']);
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('admin/dashboard', 'admin/dashboard')->name('dashboard');
     Route::inertia('admin/settings/profile', 'admin/settings/profile')->name('profile');
